@@ -1,4 +1,3 @@
-# vim test.py
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -6,13 +5,13 @@ from selenium.webdriver.chrome.service import Service
 
 options = Options()
 options.add_argument('--no-sandbox')
-options.add_argument('--headless')
+options.add_argument('--headless=new')
 options.add_argument('--disable-dev-shm-usage')
 
-service = Service('/usr/bin/chromedriver')  # Explicit path to chromedriver
-driver = webdriver.Chrome(service=service, options=options)
+# ✅ Correct path and no extra quotes
+service = Service("/usr/local/bin/chromedriver")
 
-#driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(service=service, options=options)
 
 driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
